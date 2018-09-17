@@ -443,6 +443,7 @@ packages:
     dev: false
     name: fcc-express-bground
     resolution:
+      registry: 'https://registry.npmjs.org/'
       tarball: 'https://codeload.github.com/Em-Ant/fcc-express-bground-pkg/tar.gz/597d66d2cc536e746e1603d0332246317d515f79'
     version: 0.0.5
 registry: 'https://registry.npmjs.org/'
