@@ -4,6 +4,13 @@ var app = express();
 
 // --> 7)  Mount the Logger middleware here
 
+/** 7) Root-level Middleware - A logger */
+//  place it before all the routes !
+app.use((req, res, next) => {
+  var string = req.method + ' ' + req.path + ' - ' + req.ip;
+  console.log(string);
+  next();
+})
 
 // --> 11)  Mount the body-parser middleware  here
 
@@ -43,14 +50,14 @@ app.get('/json', (req, res) => {
   }
   return res.json(message);
 })
- 
- 
-/** 7) Root-level Middleware - A logger */
-//  place it before all the routes !
-
 
 /** 8) Chaining middleware. A Time server */
-
+app.get('/now', (req, res, next) => {
+  req.time = new Date().toString();
+  next();
+},(req, res) => {
+  res.send({time: req.time});
+})
 
 /** 9)  Get input from client - Route parameters */
 
